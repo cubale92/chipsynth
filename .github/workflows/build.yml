@@ -13,7 +13,7 @@ jobs:
         include:
           - name: Windows
             os: windows-latest
-            config: -G "Visual Studio 17 2022" -A x64
+            config: -A x64
           - name: macOS-AppleSilicon
             os: macos-14
             config: -G Xcode -DCMAKE_OSX_ARCHITECTURES=arm64
@@ -22,11 +22,13 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Configure
         shell: bash
-        run: cmake -B build ${{ matrix.config }} -DCMAKE_BUILD_TYPE=Release
+        run: |
+          cmake --version
+          cmake -B build ${{ matrix.config }} -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
         shell: bash
