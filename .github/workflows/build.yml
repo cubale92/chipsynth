@@ -1,0 +1,62 @@
+name: Build SFC-8
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-latest
+            config: -G "Visual Studio 17 2022" -A x64
+          - name: macOS-AppleSilicon
+            os: macos-14
+            config: -G Xcode -DCMAKE_OSX_ARCHITECTURES=arm64
+
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure
+        shell: bash
+        run: cmake -B build ${{ matrix.config }} -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        shell: bash
+        run: |
+          targets="SFC8_VST3 SFC8_Standalone"
+          if [ "$RUNNER_OS" = "macOS" ]; then targets="$targets SFC8_AU"; fi
+          cmake --build build --config Release --parallel 4 --target $targets
+
+      - name: Collect (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          mkdir -p out
+          cp -r "build/SFC8_artefacts/Release/VST3/SFC-8.vst3" out/
+          cp "build/SFC8_artefacts/Release/Standalone/SFC-8.exe" out/
+          cp README.md out/
+
+      - name: Collect (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          mkdir -p out
+          cp -R "build/SFC8_artefacts/Release/VST3/SFC-8.vst3" out/
+          cp -R "build/SFC8_artefacts/Release/AU/SFC-8.component" out/
+          cp -R "build/SFC8_artefacts/Release/Standalone/SFC-8.app" out/
+          # ad-hoc sign so Apple Silicon hosts will load it
+          codesign --force --deep -s - out/SFC-8.vst3 out/SFC-8.component out/SFC-8.app
+          cp README.md out/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SFC-8-${{ matrix.name }}
+          path: out
