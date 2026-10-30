@@ -14,9 +14,6 @@ jobs:
           - name: Windows
             os: windows-latest
             config: -A x64
-          - name: macOS-AppleSilicon
-            os: macos-14
-            config: -G Xcode -DCMAKE_OSX_ARCHITECTURES=arm64
 
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
