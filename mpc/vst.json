@@ -1,0 +1,36 @@
+{
+  "name": "SFC-8",
+  "vendor": "8cee",
+  "uid": "Sfc8",
+  "version": 1000,
+  "so": "sfc8.so",
+  "params": "params.json",
+  "layout": "layout.conf",
+  "defines": {
+    "HAS_DISPLAY_REV": 1,
+    "PARAM_TEXT_MAX": 64,
+    "MODULE_SUBDIR": "\"SNES\""
+  },
+  "targets": [
+    "armv7",
+    "aarch64"
+  ],
+  "build": {
+    "root": "..",
+    "sources": [
+      "mpc/src/sfc8_mpc.cpp",
+      "Source/Snes/Engine.cpp",
+      "Source/Snes/Loaders.cpp"
+    ],
+    "cflags": [
+      "-std=gnu++17",
+      "-Impc/src"
+    ],
+    "libs": [
+      "-lm",
+      "-static-libstdc++",
+      "-static-libgcc",
+      "-Wl,--exclude-libs,ALL"
+    ]
+  }
+}

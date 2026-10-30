@@ -188,7 +188,7 @@ void SfcProcessor::publish (std::shared_ptr<snes::Sample> s, bool applyHints, in
         const float root = s->rootNote;
         const int rootInt = juce::roundToInt (root);
         setParam ("root", (float) juce::jlimit (0, 127, rootInt));
-        setParam ("fine", juce::jlimit (-100.0f, 100.0f, (root - (float) rootInt) * 100.0f));
+        setParam ("fine", juce::jlimit (-100.0f, 100.0f, ((float) rootInt - root) * 100.0f));   // corrects a sharp/flat sample
 
         if (s->hasEnvelopeHint)
         {

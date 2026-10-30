@@ -1,0 +1,337 @@
+{
+ "name": "SFC-8",
+ "params": [
+  {
+   "key": "volume",
+   "name": "Volume",
+   "min": -36,
+   "max": 12,
+   "default": -3,
+   "unit": "dB",
+   "dynamic_display": true
+  },
+  {
+   "key": "track",
+   "name": "Track",
+   "min": 1,
+   "max": 8,
+   "default": 1,
+   "display": "int",
+   "refresh_display": true,
+   "dynamic_display": true
+  },
+  {
+   "key": "file",
+   "name": "File",
+   "min": 0,
+   "max": 1023,
+   "default": 0,
+   "display": "int",
+   "nudge_pct": 10,
+   "refresh_display": true,
+   "dynamic_display": true
+  },
+  {
+   "key": "file_prev",
+   "name": "Prev File",
+   "min": 0,
+   "max": 1,
+   "default": 0,
+   "momentary": true,
+   "step_of": "file",
+   "step_delta": -1
+  },
+  {
+   "key": "file_next",
+   "name": "Next File",
+   "min": 0,
+   "max": 1,
+   "default": 0,
+   "momentary": true,
+   "step_of": "file",
+   "step_delta": 1
+  },
+  {
+   "key": "file_name",
+   "name": "File name",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "game",
+   "name": "Game",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_1",
+   "name": "Track 1",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_2",
+   "name": "Track 2",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_3",
+   "name": "Track 3",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_4",
+   "name": "Track 4",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_5",
+   "name": "Track 5",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_6",
+   "name": "Track 6",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_7",
+   "name": "Track 7",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "trk_8",
+   "name": "Track 8",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "sample",
+   "name": "Sample",
+   "min": 0,
+   "max": 1499,
+   "default": 0,
+   "display": "int",
+   "nudge_pct": 10,
+   "refresh_display": true,
+   "dynamic_display": true
+  },
+  {
+   "key": "sample_prev",
+   "name": "Prev Sample",
+   "min": 0,
+   "max": 1,
+   "default": 0,
+   "momentary": true,
+   "step_of": "sample",
+   "step_delta": -1
+  },
+  {
+   "key": "sample_next",
+   "name": "Next Sample",
+   "min": 0,
+   "max": 1,
+   "default": 0,
+   "momentary": true,
+   "step_of": "sample",
+   "step_delta": 1
+  },
+  {
+   "key": "sample_name",
+   "name": "Sample name",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "status",
+   "name": "Status",
+   "display": "string",
+   "live": true
+  },
+  {
+   "key": "rescan",
+   "name": "Rescan",
+   "min": 0,
+   "max": 1,
+   "default": 0,
+   "momentary": true
+  },
+  {
+   "key": "root",
+   "name": "Root",
+   "min": 0,
+   "max": 127,
+   "default": 60,
+   "display": "int",
+   "dynamic_display": true
+  },
+  {
+   "key": "fine",
+   "name": "Fine",
+   "min": -100,
+   "max": 100,
+   "default": 0,
+   "unit": "ct"
+  },
+  {
+   "key": "attack",
+   "name": "AR",
+   "min": 0,
+   "max": 15,
+   "default": 15,
+   "display": "int"
+  },
+  {
+   "key": "decay",
+   "name": "DR",
+   "min": 0,
+   "max": 7,
+   "default": 7,
+   "display": "int"
+  },
+  {
+   "key": "sl",
+   "name": "SL",
+   "min": 0,
+   "max": 7,
+   "default": 7,
+   "display": "int"
+  },
+  {
+   "key": "sr",
+   "name": "SR",
+   "min": 0,
+   "max": 31,
+   "default": 0,
+   "display": "int"
+  },
+  {
+   "key": "release",
+   "name": "Release",
+   "min": 0,
+   "max": 5000,
+   "default": 250,
+   "unit": "ms",
+   "dynamic_display": true
+  },
+  {
+   "key": "echo",
+   "name": "Echo",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": 0
+  },
+  {
+   "key": "edl",
+   "name": "EDL",
+   "min": 0,
+   "max": 15,
+   "default": 4,
+   "display": "int"
+  },
+  {
+   "key": "efb",
+   "name": "EFB",
+   "min": -128,
+   "max": 127,
+   "default": 64,
+   "display": "int"
+  },
+  {
+   "key": "evol",
+   "name": "EVOL",
+   "min": -128,
+   "max": 127,
+   "default": 48,
+   "display": "int"
+  },
+  {
+   "key": "fir",
+   "name": "FIR",
+   "options": [
+    "From file",
+    "Flat",
+    "Lowpass",
+    "Mellow",
+    "Band"
+   ],
+   "default": 1
+  },
+  {
+   "key": "poly",
+   "name": "Voices",
+   "options": [
+    "8",
+    "16",
+    "32"
+   ],
+   "default": 1
+  },
+  {
+   "key": "pitch_limit",
+   "name": "Pitch Limit",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": 1
+  },
+  {
+   "key": "glide",
+   "name": "Glide",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": 0
+  },
+  {
+   "key": "glide_time",
+   "name": "Glide Time",
+   "min": 1,
+   "max": 1000,
+   "default": 80,
+   "unit": "ms"
+  },
+  {
+   "key": "velocity",
+   "name": "Velocity",
+   "min": 0,
+   "max": 100,
+   "default": 70,
+   "unit": "%"
+  },
+  {
+   "key": "bend",
+   "name": "Bend",
+   "min": 0,
+   "max": 24,
+   "default": 2,
+   "display": "int"
+  },
+  {
+   "key": "vibrato",
+   "name": "Vibrato",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "unit": "ct"
+  },
+  {
+   "key": "pan",
+   "name": "Pan",
+   "min": -100,
+   "max": 100,
+   "default": 0,
+   "dynamic_display": true
+  }
+ ]
+}

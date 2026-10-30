@@ -35,3 +35,19 @@ The DAW project stores the current sample itself, so a project still opens if th
 
 Every push builds Windows VST3 + Standalone on GitHub Actions (also macOS) and on GitLab CI.
 Download the artifact, then copy `SFC-8.vst3` to `C:\Program Files\Common Files\VST3`.
+
+## MPC OS (Akai MPC / Force standalone)
+
+`mpc/` builds SFC-8 as a native Linux VST2 for MPC OS with
+[mpc-vst-plugins](https://github.com/sd88me/mpc-vst-plugins): one zip for Gen1 (MPC Live/One/X/Key 61, Force; armv7)
+and one for Gen2 (Live III, One G2, Key G2; aarch64). GitHub Actions builds both on every push and puts them on a
+draft release (Releases → `sfc8-mpc-v1.0.0`).
+
+- Install the zip with the [MPC plugin installer app](https://github.com/sd88me/mpc-vst-plugins/releases/latest)
+  (needs root SSH on the device). The plugin shows up as **8cee - VST - SFC-8**.
+- Put `.spc`, `.sfc`/`.smc` or `.brr` files in the plugin's **SNES** folder
+  (`/sdcard/Synths/8cee - VST - SFC-8/SNES/`, subfolders are fine), or in a folder called **SFC-8** on an SD card or USB
+  stick, then press **RESCAN**. Updates keep the SNES folder.
+- **SOUND** page: pick the file (Q-Link 1 or the arrows), tap a track tile 1–8, pick the sample on that track,
+  root/fine/volume/pan. **ENVELOPE**: S-DSP ADSR + echo. **PLAY**: voices, pitch limit, glide, velocity, bend, vibrato.
+- Projects remember the file by name, the track layout and every setting.

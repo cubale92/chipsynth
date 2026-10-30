@@ -1,0 +1,24 @@
+# SFC-8 for MPC OS (Akai MPC / Force standalone): Linux VST2 for Gen1 (armv7) and Gen2 (aarch64).
+# Built with sd88me/mpc-vst-plugins' pinned toolchain (glibc 2.31 for Gen1, so MPC OS 2.x loads it too),
+# host-tested under ASan, packaged with its installer, and attached to a DRAFT release.
+name: SFC-8 MPC
+
+on:
+  push:
+    branches: [main]
+    paths: ["mpc/**", "Source/Snes/**", ".github/workflows/mpc.yml"]
+  workflow_dispatch:
+
+jobs:
+  mpc:
+    uses: sd88me/mpc-vst-plugins/.github/workflows/vst-release.yml@adc48a35e8e190cd4c7a1adb20da5a4cce2fdea4
+    permissions: { contents: write }
+    with:
+      tag: sfc8-mpc-v1.0.0
+      version: 1.0.0
+      tools_ref: adc48a35e8e190cd4c7a1adb20da5a4cce2fdea4
+      vst_dir: mpc
+      build: '"$MPC_VST/tools/build_port.sh" mpc/vst.json'
+      host_test: '"$MPC_VST/tools/test_port.sh" mpc/vst.json'
+      user_data: SNES
+      about: "SFC-8: play SNES instruments polyphonically. Load a .spc (the song's 8 real voices) or a .sfc ROM (scanned for samples)."

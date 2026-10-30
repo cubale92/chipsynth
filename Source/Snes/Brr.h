@@ -48,7 +48,7 @@ inline uint8_t decodeBrrBlock (const uint8_t* blk, std::vector<int16_t>& out, in
         nib = (nib ^ 8) - 8; // sign-extend 4 bit
 
         int s;
-        if (shift <= 12) s = (nib << shift) >> 1;
+        if (shift <= 12) s = (nib * (1 << shift)) >> 1;   // multiply: shifting a negative is UB
         else             s = nib < 0 ? -2048 : 0;
 
         const int a = p1;          // previous output (already *2 scaled)
